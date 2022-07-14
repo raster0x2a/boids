@@ -71,7 +71,7 @@ function keepWithinBounds(boid) {
 // point towards the center of mass.
 function flyTowardsCenter(boid) {
   // adjust velocity by this %. default is 0.005. 0~0.01
-  const centeringFactor = Number(document.getElementById("centering"));;
+  const centeringFactor = Number(document.getElementById("centering").value);
 
   let centerX = 0;
   let centerY = 0;
@@ -98,8 +98,8 @@ function flyTowardsCenter(boid) {
 function avoidOthers(boid) {
   // The distance to stay away from other boids
   const minDistance = 20;
-  // Adjust velocity by this %. default is 0.05
-  const avoidFactor = Number(document.getElementById("avoid"));
+  // Adjust velocity by this %. default is 0.05. 0~0.1
+  const avoidFactor = Number(document.getElementById("avoid").value);
   let moveX = 0;
   let moveY = 0;
   for (let otherBoid of boids) {
