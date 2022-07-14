@@ -41,7 +41,8 @@ function nClosestBoids(boid, n) {
 function sizeCanvas() {
   const canvas = document.getElementById("boids");
   width = window.innerWidth;
-  height = window.innerHeight;
+  // custom value field height
+  height = window.innerHeight - 35;
   canvas.width = width;
   canvas.height = height;
 }
