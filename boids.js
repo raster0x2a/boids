@@ -41,8 +41,8 @@ function nClosestBoids(boid, n) {
 function sizeCanvas() {
   const canvas = document.getElementById("boids");
   width = window.innerWidth;
-  // custom value field height
-  height = window.innerHeight - 35;
+  // window height - custom value field height
+  height = window.innerHeight - document.getElementById("custom-value-field").clientHeight;
   canvas.width = width;
   canvas.height = height;
 }
@@ -70,7 +70,8 @@ function keepWithinBounds(boid) {
 // Find the center of mass of the other boids and adjust velocity slightly to
 // point towards the center of mass.
 function flyTowardsCenter(boid) {
-  const centeringFactor = 0.005; // adjust velocity by this %
+  // adjust velocity by this %. default is 0.005. 0~0.01
+  const centeringFactor = Number(document.getElementById("centering"));;
 
   let centerX = 0;
   let centerY = 0;
@@ -95,8 +96,10 @@ function flyTowardsCenter(boid) {
 
 // Move away from other boids that are too close to avoid colliding
 function avoidOthers(boid) {
-  const minDistance = 20; // The distance to stay away from other boids
-  const avoidFactor = 0.05; // Adjust velocity by this %
+  // The distance to stay away from other boids
+  const minDistance = 20;
+  // Adjust velocity by this %. default is 0.05
+  const avoidFactor = Number(document.getElementById("avoid"));
   let moveX = 0;
   let moveY = 0;
   for (let otherBoid of boids) {
